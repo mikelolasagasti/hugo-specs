@@ -52,11 +52,6 @@ BuildRequires:  golang(github.com/bep/golibsass/libsass) >= 0.7.0
 #%patch0005 -p1
 #%patch0006 -p1
 
-# replace forked locales to main package as patch has been applied and published
-sed -i \
-    -e 's|"github.com/gohugoio/locales|"github.com/go-playground/locales|' \
-    $(find . -name '*.go')
-
 # Replace blackfriday import path to avoid conflict with v2
 sed -i \
     -e 's|"github.com/russross/blackfriday|"gopkg.in/russross/blackfriday.v1|' \
