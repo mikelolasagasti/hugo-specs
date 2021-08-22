@@ -41,6 +41,10 @@ BuildRequires:  golang(github.com/go-playground/locales/nn)
 %prep
 %goprep
 
+sed -i \
+    -e 's|"github.com/gohugoio/locales|"github.com/go-playground/locales|' \
+    $(find . -name '*.go')
+
 %build
 for cmd in gen; do
   %gobuild -o %{gobuilddir}/bin/$(basename $cmd) %{goipath}/$cmd
