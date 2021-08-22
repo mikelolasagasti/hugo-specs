@@ -23,7 +23,7 @@ Summary:        The world’s fastest framework for building websites
 # Upstream license specification: Apache-2.0 and MIT
 License:        ASL 2.0 and MIT
 URL:            %{gourl}
-Source0:        %{gosource}
+Source0:        https://github.com/gohugoio/hugo/archive/v0.87.0/hugo-0.87.0.tar.gz
 # Skip tests that uses the network.
 # https://sources.debian.org/data/main/h/hugo/0.58.3-1/debian/patches/0005-skip-modules-TestClient.patch
 #Patch0001:      0005-skip-modules-TestClient.patch
@@ -37,6 +37,7 @@ Source0:        %{gosource}
 #Patch0006:      0001-Bump-afero-to-1.5.1.patch
 
 BuildRequires:  golang(github.com/bep/golibsass/libsass) >= 0.7.0
+BuildRequires:  sed
 
 %description
 %{common_description}
@@ -51,6 +52,8 @@ BuildRequires:  golang(github.com/bep/golibsass/libsass) >= 0.7.0
 #%patch0004 -p1
 #%patch0005 -p1
 #%patch0006 -p1
+
+find .
 
 sed -i -e 's|"github.com/gohugoio/go-i18n/v2/i18n|"github.com/nicksnyder/go-i18n/v2/i18n|' $(find . -name '*.go')
 
