@@ -21,16 +21,16 @@ License:        MIT
 URL:            %{gourl}
 Source0:        %{gosource}
 
-BuildRequires:  golang(github.com/go-playground/locales)
-BuildRequires:  golang(github.com/go-playground/locales/currency)
+BuildRequires:  golang(github.com/gohugoio/locales)
+BuildRequires:  golang(github.com/gohugoio/locales/currency)
 BuildRequires:  golang(golang.org/x/tools/go/packages)
 
 %if %{with check}
 # Tests
 BuildRequires:  golang(github.com/bep/workers)
 BuildRequires:  golang(github.com/frankban/quicktest)
-BuildRequires:  golang(github.com/go-playground/locales/en)
-BuildRequires:  golang(github.com/go-playground/locales/nn)
+BuildRequires:  golang(github.com/gohugoio/locales/en)
+BuildRequires:  golang(github.com/gohugoio/locales/nn)
 %endif
 
 %description
@@ -40,10 +40,6 @@ BuildRequires:  golang(github.com/go-playground/locales/nn)
 
 %prep
 %goprep
-
-sed -i \
-    -e 's|"github.com/gohugoio/locales|"github.com/go-playground/locales|' \
-    $(find . -name '*.go')
 
 %build
 for cmd in gen; do
