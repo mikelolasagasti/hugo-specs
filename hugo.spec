@@ -52,16 +52,15 @@ BuildRequires:  golang(github.com/bep/golibsass/libsass) >= 0.7.0
 #%patch0005 -p1
 #%patch0006 -p1
 
+sed -i -e 's|"github.com/gohugoio/go-i18n/v2/i18n|"github.com/nicksnyder/go-i18n/v2/i18n|' $(find . -name '*.go')
+
+
 # Replace blackfriday import path to avoid conflict with v2
-sed -i \
-    -e 's|"github.com/russross/blackfriday|"gopkg.in/russross/blackfriday.v1|' \
-    $(find . -name '*.go')
+sed -i -e 's|"github.com/russross/blackfriday|"gopkg.in/russross/blackfriday.v1|' $(find . -name '*.go')
 
 # Pin github.com/evanw/esbuild to v0.8.20
 # See https://github.com/gohugoio/hugo/issues/8141
-sed -i \
-    -e 's|"github.com/evanw/esbuild|"github.com/evanw/esbuild-0.8.20|' \
-    $(find . -name '*.go')
+sed -i -e 's|"github.com/evanw/esbuild|"github.com/evanw/esbuild-0.8.20|' $(find . -name '*.go')
 
 # Skip test that assumes directory is in a git repository
 sed -i '/TestPageWithLastmodFromGitInfo/a t.Skip()' hugolib/page_test.go
