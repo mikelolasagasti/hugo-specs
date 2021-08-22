@@ -52,11 +52,6 @@ BuildRequires:  golang(github.com/bep/golibsass/libsass) >= 0.7.0
 #%patch0005 -p1
 #%patch0006 -p1
 
-sed -i \
-    -e 's|"github.com/gohugoio/go-i18n/v2/i18n|"github.com/nicksnyder/go-i18n/v2/i18n|' \
-    $(find . -name '*.go')
-
-
 # Replace blackfriday import path to avoid conflict with v2
 sed -i \
     -e 's|"github.com/russross/blackfriday|"gopkg.in/russross/blackfriday.v1|' \
