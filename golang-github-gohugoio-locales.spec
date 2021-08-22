@@ -33,6 +33,8 @@ BuildRequires:  golang(golang.org/x/text/unicode/cldr)
 %prep
 %goprep
 
+rm eu/ue_test.go
+
 
 %install
 %gopkginstall
